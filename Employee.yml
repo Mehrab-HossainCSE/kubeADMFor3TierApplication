@@ -1,38 +1,38 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend-deployment
+  name: Users-service
   namespace: kubernetes-cluster
   labels:
-    app: backend
+    app: Employee-service
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: backend
+      app: Employee-service
   template:
     metadata:
-      name: backend
+      name: Employee-service
       labels:
-        app: backend
+        app: Employee-service
     spec:
       containers:
-        - name: backend
-          image: mehrabhossain/usermanagement-backend:latest
+        - name: Employee-service
+          image: mehrabhossain/employeemanagement-backend:latest
           ports:
             - containerPort: 8080
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: backend-service
+  name: Employee-service
   namespace: kubernetes-cluster
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
-    app: backend
+    app: Employee-service
   ports:
     - port: 8080
       targetPort: 8080
       protocol: TCP
-      nodePort: 31100
+      
