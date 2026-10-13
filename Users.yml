@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: Users-service
+  name: user-service
   namespace: kubernetes-cluster
   labels:
-    app: Users-service
+    app: user-service
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: Users-service
+      app: user-service
   template:
     metadata:
-      name: Users-service
+      name: user-service
       labels:
-        app: Users-service
+        app: user-service
     spec:
       containers:
-        - name: Users-service
+        - name: user-service
           image: mehrabhossain/usermanagement-backend:latest
           ports:
             - containerPort: 8080
@@ -25,12 +25,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: Users-service
+  name: user-service
   namespace: kubernetes-cluster
 spec:
   type: ClusterIP
   selector:
-    app: Users-service
+    app: user-service
   ports:
     - port: 8080
       targetPort: 8080
