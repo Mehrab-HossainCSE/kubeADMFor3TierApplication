@@ -31,7 +31,7 @@ spec:
   type: ClusterIP
   selector:
     app: employee-service
-  ports:
+  ports: 
     - port: 8080
       targetPort: 8080
       protocol: TCP
