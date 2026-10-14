@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: postgresql
-          image: postgres: 16
+          image: postgres:16
           ports:
             - containerPort: 5432
           env:
@@ -27,6 +27,11 @@ spec:
                 secretKeyRef:
                   name: postgresql-secret
                   key: POSTGRES_PASSWORD
+            - name: POSTGRES_DB
+              valueFrom:
+                secretKeyRef:
+                  name: postgresql-secret
+                  key: POSTGRES_DB
           volumeMounts:
             - name: postgresql-storage
               mountPath: /var/lib/postgresql/data
