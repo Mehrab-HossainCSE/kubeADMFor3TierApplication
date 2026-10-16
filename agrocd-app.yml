@@ -8,7 +8,7 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/Mehrab-HossainCSE/https://github.com/Mehrab-HossainCSE/kubeADMFor3TierApplication.git
+    repoURL: https://github.com/Mehrab-HossainCSE/kubeADMFor3TierApplication.git
     targetRevision: main
     path: .
 
