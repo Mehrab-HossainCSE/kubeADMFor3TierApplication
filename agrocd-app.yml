@@ -1,0 +1,24 @@
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: three-tier-app
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/Mehrab-HossainCSE/https://github.com/Mehrab-HossainCSE/kubeADMFor3TierApplication.git
+    targetRevision: main
+    path: .
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kubernetes-cluster
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
